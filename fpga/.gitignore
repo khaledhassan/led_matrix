@@ -55,11 +55,8 @@
 ##
 !**/class.ptf
 ##
-!*.tbd
-##
 !*.sof
 ##
-## tbd
 
 !*.tcl
 
