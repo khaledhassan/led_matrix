@@ -107,16 +107,45 @@ set_clock_uncertainty -fall_from [get_clocks {clocks_pll_inst|altpll_component|a
 #**************************************************************
 
 
+#**************************************************************
+# Set Board Parameters (wire wrap in prototype)
+#**************************************************************
+# 8 cm
+set BoardDelay_min 0.267
+# 12 cm
+set BoardDelay_max 0.400
+
+set Matrix_STB_tSU  5
+set Matrix_STB_tH   5
+set Matrix_Data_tSU 10
+set Matrix_Data_tH  5
 
 #**************************************************************
 # Set Maximum Delay
 #**************************************************************
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -max [expr $Matrix_Data_tSU + $BoardDelay_max - $BoardDelay_min] [get_ports {matrix_r1}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -max [expr $Matrix_Data_tSU + $BoardDelay_max - $BoardDelay_min] [get_ports {matrix_g1}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -max [expr $Matrix_Data_tSU + $BoardDelay_max - $BoardDelay_min] [get_ports {matrix_b1}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -max [expr $Matrix_Data_tSU + $BoardDelay_max - $BoardDelay_min] [get_ports {matrix_r2}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -max [expr $Matrix_Data_tSU + $BoardDelay_max - $BoardDelay_min] [get_ports {matrix_g2}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -max [expr $Matrix_Data_tSU + $BoardDelay_max - $BoardDelay_min] [get_ports {matrix_b2}]
+
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -max [expr $Matrix_STB_tSU + $BoardDelay_max - $BoardDelay_min] [get_ports {matrix_stb}]
+
 
 
 
 #**************************************************************
 # Set Minimum Delay
 #**************************************************************
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -min [expr 0 - $Matrix_Data_tH + $BoardDelay_min - $BoardDelay_max] [get_ports {matrix_r1}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -min [expr 0 - $Matrix_Data_tH + $BoardDelay_min - $BoardDelay_max] [get_ports {matrix_g1}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -min [expr 0 - $Matrix_Data_tH + $BoardDelay_min - $BoardDelay_max] [get_ports {matrix_b1}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -min [expr 0 - $Matrix_Data_tH + $BoardDelay_min - $BoardDelay_max] [get_ports {matrix_r2}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -min [expr 0 - $Matrix_Data_tH + $BoardDelay_min - $BoardDelay_max] [get_ports {matrix_g2}]
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -min [expr 0 - $Matrix_Data_tH + $BoardDelay_min - $BoardDelay_max] [get_ports {matrix_b2}]
+
+set_output_delay -clock [get_clocks {clocks_pll_inst|altpll_component|auto_generated|pll1|clk[2]}] -min [expr 0 - $Matrix_STB_tH + $BoardDelay_min - $BoardDelay_max] [get_ports {matrix_stb}]
 
 
 
