@@ -69,6 +69,8 @@ set_location_assignment PIN_T10 -to matrix_row[2]
 set_location_assignment PIN_R11 -to matrix_clk
 set_location_assignment PIN_P11 -to matrix_stb
 set_location_assignment PIN_R10 -to matrix_oe
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name QIP_FILE hdl/ip/clocks_pll/clocks_pll.qip
 set_global_assignment -name VHDL_FILE hdl/pwm.vhd
 set_global_assignment -name VHDL_FILE hdl/pulse_sync.vhd
 set_global_assignment -name VHDL_FILE hdl/matrix_driver.vhd
@@ -77,6 +79,4 @@ set_global_assignment -name VHDL_FILE hdl/flop_sync.vhd
 set_global_assignment -name VHDL_FILE hdl/clk_div.vhd
 set_global_assignment -name VHDL_FILE hdl/top_level.vhd
 set_global_assignment -name SDC_FILE matrix_driver.sdc
-set_global_assignment -name QIP_FILE hdl/ip/clocks_pll.qip
 set_global_assignment -name CDF_FILE output_files/matrix_driver.cdf
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
